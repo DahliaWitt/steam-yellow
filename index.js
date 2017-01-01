@@ -9,12 +9,9 @@ SteamUser.prototype.setPersona = function(state, name) {
 	});
 };
 
-console.log(process.env.STEAMUSER);
-console.log(process.env.PASSWORD);
-
 const logOnOptions = {
-    accountName: process.env.STEAMUSER,
-    password: process.env.PASSWORD
+    accountName: process.argv[2],
+    password: process.argv[3]
 };
 
 client.logOn(logOnOptions);
