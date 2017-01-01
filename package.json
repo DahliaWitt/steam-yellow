@@ -1,0 +1,29 @@
+{
+  "name": "steam-yellow",
+  "version": "1.0.0",
+  "description": "Turns your username yellow in steam.",
+  "main": "index.js",
+  "dependencies": {
+    "steam": "^1.4.0",
+    "steam-user": "^3.14.0"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/DrakeWitt/steam-yellow.git"
+  },
+  "keywords": [
+    "steam",
+    "username",
+    "yellow"
+  ],
+  "author": "Drake Witt",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/DrakeWitt/steam-yellow/issues"
+  },
+  "homepage": "https://github.com/DrakeWitt/steam-yellow#readme"
+}
