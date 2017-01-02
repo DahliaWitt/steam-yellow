@@ -1,6 +1,10 @@
 # Steam Yellow
 Turn your username yellow in steam.
 
+## Video tutorials:
+OneUpGaming: https://www.youtube.com/watch?v=acPqNhXtLzc
+uLLeticaL: https://www.youtube.com/watch?v=337khh_8WJ4
+
 ## How to install:
 1. Install NodeJS LTS here: https://nodejs.org/en/ (Tested with v.6.9.2)
 2. Download this repo and extract somewhere.
