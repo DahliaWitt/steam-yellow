@@ -11,3 +11,5 @@ Turn your username yellow in steam.
   * Replace username and password with yours, obviously.
 
 ### Use at your own risk. I'm not responsible for anything that happens. 
+
+Disclaimer: Valve is aware of the glitch (http://steamcommunity.com/discussions/forum/1/154645427520675908/). Use at your own risk. 
