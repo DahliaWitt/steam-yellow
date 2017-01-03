@@ -1,6 +1,6 @@
 {
   "name": "steam-yellow",
-  "version": "1.0.0",
+  "version": "3.0.0",
   "description": "Turns your username yellow in steam.",
   "main": "index.js",
   "dependencies": {
