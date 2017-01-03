@@ -1,3 +1,5 @@
+"use strict";
+
 /*
 * IMPORTS: Libraries that steam-yellow uses.
 */
