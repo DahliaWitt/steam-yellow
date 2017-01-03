@@ -1,10 +1,7 @@
 @echo off
 title /!\Steam Gold/!\
 color E
-npm install
-echo 
-echo                                                                                                     
-echo                                                                                                     
+call npm install
 echo                                                                              .-:/+ooo+/:.`          
 echo                                                                          `:ohmNMMMMMMMMMNmy+-       
 echo                                                                        .odMMMNdys++++oshmNMMNh/`    
@@ -35,7 +32,6 @@ echo                                                  .mMs` `.-+oss+:.   /mMMMMM
 echo                                                   .yNmo-`        ./hMMMMMMy.                        
 echo                                                     :hNNdyo///+shmMMMMMNh:`                         
 echo                                                       -+hmNMMMMMMMMNmho-                            
-echo                                                          `-:+oooo/:-`                               
-echo                                                                                                   
-echo 
-node index.js
+echo                                                          `-:+oooo/:-`     
+call node index.js                          
+pause 
