@@ -1,0 +1,5 @@
+package sys;
+
+message BaseRequest {
+    extensions 100 to max;
+}

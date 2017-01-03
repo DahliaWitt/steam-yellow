@@ -25,5 +25,21 @@
   "bugs": {
     "url": "https://github.com/DrakeWitt/steam-yellow/issues"
   },
-  "homepage": "https://github.com/DrakeWitt/steam-yellow#readme"
+  "homepage": "https://github.com/DrakeWitt/steam-yellow#readme",
+  "nexe": {
+    "input": "./bin/nexe",
+    "output": "nexe^$",
+    "temp": "src",
+    "browserify": {
+        "requires": [],
+        "excludes": [],
+        "paths": []
+    },
+    "runtime": {
+        "framework": "node",
+        "version": "5.6.0",
+        "js-flags": "--use_strict",
+        "ignoreFlags": true
+    }
+}
 }

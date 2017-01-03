@@ -1,0 +1,21 @@
+package Sample;
+
+import "MyOptions.proto";
+
+option (MyOptions.file_option) = "Option!";
+
+enum EnumType {
+    option (MyOptions.enum_option) = "Option!";
+    VALUE = 1 [(MyOptions.enum_value_option) = "Option!"];
+}
+
+message MessageType {
+    option (MyOptions.message_option) = "Option!";
+    required string field = 1 [(MyOptions.field_option) = "Option!"];
+}
+
+service ServiceType {
+    rpc rpcCall (MessageType) returns (MessageType) {
+        option (MyOptions.method_option) = "Option!";
+    }
+}

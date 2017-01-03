@@ -1,0 +1,14 @@
+message SessionCommand {
+    enum SessionCommandType {
+        LOGIN = 1001;
+    }
+    extensions 100 to max;
+}
+
+message Command_Login {
+    extend SessionCommand {
+        optional Command_Login ext = 1001;
+    }
+    optional string user_name = 1;
+    optional string password = 2;
+}

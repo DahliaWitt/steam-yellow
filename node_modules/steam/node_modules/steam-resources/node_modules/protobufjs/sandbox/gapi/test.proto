@@ -1,0 +1,12 @@
+syntax = "proto3";
+
+message Entity {
+	map<string, Value> properties = 3;
+}
+
+message Value {
+	oneof value_type {
+    	// A boolean value.
+    	bool boolean_value = 1;
+	}
+}

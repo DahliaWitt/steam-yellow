@@ -1,0 +1,15 @@
+message A {
+    repeated group EntryResponse = 1 {
+        required ResponseType response_type = 2;
+        optional string id_string = 3;
+        optional string parent_id_string = 4;
+        optional int64 position_in_parent = 5;
+        optional int64 version = 6;
+        optional string name = 7;
+        optional string non_unique_name = 8;
+        optional string error_message = 9;
+        optional int64 mtime = 10;
+    }
+
+    message ResponseType {}
+}
