@@ -1,0 +1,8 @@
+package sys;
+import "common.proto";
+
+message A {
+    extend BaseRequest {
+        optional A cmd = 101;
+    }
+}

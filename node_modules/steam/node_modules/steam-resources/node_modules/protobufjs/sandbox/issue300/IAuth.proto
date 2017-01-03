@@ -1,0 +1,14 @@
+package IAuth;
+
+message Name {
+    required string name = 1;
+}
+
+message User {}
+
+service Impl {
+    rpc user (Name) returns (User) {
+        option (core.rpcdoc) = "Get user data.";
+        option (core.auth) = true; // user or member of the admin group
+    }
+}

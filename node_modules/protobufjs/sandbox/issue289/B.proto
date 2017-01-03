@@ -1,0 +1,8 @@
+package stock;
+import "common.proto";
+
+message B  {
+    extend sys.BaseRequest {
+        optional B cmd = 102;
+    }
+}
