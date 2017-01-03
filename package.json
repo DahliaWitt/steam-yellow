@@ -4,6 +4,7 @@
   "description": "Turns your username yellow in steam.",
   "main": "index.js",
   "dependencies": {
+    "inquirer": "^2.0.0",
     "steam": "^1.4.0",
     "steam-user": "^3.14.0"
   },
@@ -31,15 +32,15 @@
     "output": "nexe^$",
     "temp": "src",
     "browserify": {
-        "requires": [],
-        "excludes": [],
-        "paths": []
+      "requires": [],
+      "excludes": [],
+      "paths": []
     },
     "runtime": {
-        "framework": "node",
-        "version": "5.6.0",
-        "js-flags": "--use_strict",
-        "ignoreFlags": true
+      "framework": "node",
+      "version": "5.6.0",
+      "js-flags": "--use_strict",
+      "ignoreFlags": true
     }
-}
+  }
 }
