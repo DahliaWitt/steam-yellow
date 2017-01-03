@@ -2,46 +2,61 @@
 * IMPORTS: Libraries that steam-yellow uses.
 */
 const SteamUser = require('steam-user');
-const readline = require('readline');
+const inquirer = require('inquirer');
 const client = new SteamUser();
 
-// NodeJS Readline
-const rl = readline.createInterface({
-	input: process.stdin,
-	output: process.stdout
-});
-
-// Overwrite the SteamUser library's persona flags to make it yellow
-SteamUser.prototype.setPersona = function (state, name) {
-	this._send(SteamUser.EMsg.ClientChangeStatus, {
-		"persona_state": state,
-		"persona_state_flags": 3847, // This makes it yellow
-		"player_name": name
-	});
-};
 // Verbosing info to user
 console.log("Welcome to yellow-steam!");
 console.log("Join our discord and steam group!");
 console.log("WEBSITE: https://drakewitt.github.io/steam-yellow/");
 
-// Prompt for username
-rl.question('Username? ', (answer) => {
-
-	let username = answer;
-	rl.question('Password? ', (answer) => {
-		let password = answer;
-		const logOnOptions = {
-			accountName: username,
-			password: password
-		};
-
-		client.logOn(logOnOptions);
-
-		rl.close();
+let flags;
+// Overwrite the SteamUser library's persona flags to make it yellow
+SteamUser.prototype.setPersona = function (state, name) {
+	this._send(SteamUser.EMsg.ClientChangeStatus, {
+		"persona_state": state,
+		"persona_state_flags": flags, // This makes it yellow
+		"player_name": name
 	});
-});
-
+};
 client.on('loggedOn', () => {
 	client.setPersona(SteamUser.Steam.EPersonaState.Online);
 	console.log("Logged In! Press CTRL and C to stop.");
 });
+
+// Prompt for stuff
+inquirer.prompt([
+	{
+		name: 'accountName',
+		message: 'Steam username:',
+		type: 'input'
+	},
+	{
+		name: 'password',
+		message: 'Steam password:',
+		type: 'password'
+	},
+	{
+		name: 'flags',
+		message: 'Please select which flags to enable:',
+		type: 'checkbox',
+		choices: [
+			{name: "Yellow name",
+			 value: 4,
+			 checked: true},
+			{name: "VR online indicator",
+			 value: 2048},
+			{name: "Mobile online indicator",
+			 value: 512},
+			{name: "Web online indicator",
+			 value: 256}
+		]
+	}
+// then log in
+]).then(data => {
+	flags = data.flags.reduce((v,p)=>v+p, 0);
+
+	client.logOn(data);
+});
+
+
