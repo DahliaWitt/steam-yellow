@@ -1,6 +1,7 @@
 @echo off
 title /!\Steam Gold/!\
 color E
+npm install
 echo 
 echo                                                                                                     
 echo                                                                                                     
