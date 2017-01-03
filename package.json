@@ -5,6 +5,7 @@
   "main": "index.js",
   "dependencies": {
     "inquirer": "^2.0.0",
+    "minimist": "^1.2.0",
     "steam": "^1.4.0",
     "steam-user": "^3.14.0"
   },

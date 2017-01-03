@@ -21,8 +21,40 @@ NOTE: This is a different process than the original program. Its been redesigned
 $ git clone https://github.com/DrakeWitt/steam-yellow.git
 $ cd steam-yellow
 $ npm install
-$ node index.js username password
 ```
+
+## How to run (advanced):
+
+### Prompt
+```bash
+$ node index
+```
+
+Then enter information manually.
+
+### Command line arguments
+```bash
+$ node index --user username --pass password --flags 4
+```
+
+Flags default to everything enabled.
+
+### JSON file
+```bash
+$ node index ./login.json
+```
+
+Then in `./login.json`:
+
+```json
+{
+	"username": "username",
+	"password": "password",
+	"flags": 4
+}
+```
+
+Flags default to everything enabled.
 
 ### Use at your own risk. I'm not responsible for anything that happens. 
 
