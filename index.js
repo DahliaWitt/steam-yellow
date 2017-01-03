@@ -38,7 +38,7 @@ inquirer.prompt([
 	},
 	{
 		name: 'flags',
-		message: 'Please select which flags to enable:',
+		message: 'Please select which flags to enable (max 3 indicators):',
 		type: 'checkbox',
 		choices: [
 			{name: "Yellow name",
@@ -49,7 +49,9 @@ inquirer.prompt([
 			{name: "Mobile online indicator",
 			 value: 512},
 			{name: "Web online indicator",
-			 value: 256}
+			 value: 256},
+                        {name: "Big picture indicator",
+                         value: 1024}
 		]
 	}
 // then log in
