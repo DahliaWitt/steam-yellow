@@ -1,8 +1,0 @@
-enum _test {
-    VALUE1 = 1;
-    VALUE2 = 2;
-}
-
-message TestMessage {
-    required _test test = 1;
-}
