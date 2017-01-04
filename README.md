@@ -16,16 +16,21 @@ uLLeticaL: https://www.youtube.com/watch?v=337khh_8WJ4 (Old)
 2. Download this repo [here](https://github.com/DrakeWitt/steam-yellow/archive/master.zip) and extract somewhere.
 3. Start the program by double clicking on `start.bat` if you are on windows or `start.sh` on macOS.
 
-NOTE: This is a different process than the original program. Its been redesigned to work a lot easier. If you get errors related to npm try restarting your computer. 
+NOTE: This is a different process than the original program. It has been re-designed to work much easier. If you get errors related to "NPM" try restarting your computer. 
 
-## How to install (advanced):
+## If you have an Error about Missing Modules, Please Run
+```bash
+npm update
+```
+
+## How to install (Advanced):
 ```bash
 $ git clone https://github.com/DrakeWitt/steam-yellow.git
 $ cd steam-yellow
 $ npm install
 ```
 
-## How to run (advanced):
+## How to run (Advanced):
 
 ### Prompt
 ```bash
@@ -34,7 +39,7 @@ $ node index
 
 Then enter information manually.
 
-### Command line arguments
+### Command line Arguments
 ```bash
 $ node index --user username --pass password --flags 4
 ```
@@ -60,4 +65,4 @@ Flags default to everything enabled.
 
 ### Use at your own risk. I'm not responsible for anything that happens. 
 
-Disclaimer: Valve is aware of the glitch (http://steamcommunity.com/discussions/forum/1/154645427520675908/). Use at your own risk. 
+Disclaimer: Steam Forum Moderators are currently aware of the glitch and have most likely have reported this to Valve (http://steamcommunity.com/discussions/forum/1/154645427520675908/). Use at your own risk. 

@@ -14,28 +14,65 @@ console.log("Join our discord and steam group!");
 console.log("WEBSITE: https://drakewitt.github.io/steam-yellow/");
 
 let flags;
+let counter = 0;
+let flagList = [
+	1,
+	256,
+	512,
+	1024
+];
+
 // Overwrite the SteamUser library's persona flags to make it yellow
 SteamUser.prototype.setPersona = function (state, name) {
-	this._send(SteamUser.EMsg.ClientChangeStatus, {
-		"persona_state": state,
-		"persona_state_flags": flags, // This makes it yellow
-		"player_name": name
-	});
+	if (flags > 0) {
+		this._send(SteamUser.EMsg.ClientChangeStatus, {
+			"persona_state": state,
+			"persona_state_flags": flags,
+			"player_name": name
+		});
+	} else {
+		let flags = 0;
+		
+		let update = function() {
+			flags |= flagList[Math.floor(counter / 2)];
+			
+			let finalFlags = flags;
+			if (counter % 2 == 1) {
+				finalFlags |= 4;
+			}
+			
+			console.log("Applying flags " + finalFlags);
+			
+			this._send(SteamUser.EMsg.ClientChangeStatus, {
+				"persona_state": state,
+				"persona_state_flags": finalFlags,
+				"player_name": name
+			});
+			
+			counter++;
+			if (counter >= flagList.length * 2) {
+				counter = 0;
+				flags = 0;
+			}
+		}.bind(this);
+		
+		setInterval(update, 750);
+	}
 };
 client.on('loggedOn', () => {
 	client.setPersona(SteamUser.Steam.EPersonaState.Online);
-	console.log("Logged In! Press CTRL and C to stop.");
+	console.log("Logged In! Press CTRL and C to stop.\nProgram must be left Open to Have Flash");
 });
 
 /** (<Function callback>) => <Promise ({flags: <Number>, ...})> */
 function getLogin(callback) {
-	if (argv.user && argv.pass) {           // command line
+	if (argv.user && argv.pass) {		// command line
 		return Promise.resolve({
 			flags: argv.flags || 2820,
 			accountName: argv.user,
 			password: argv.pass
 		});
-	} else if (argv._.length) {             // JSON file
+	} else if (argv._.length) {		// JSON file
 		let data = require(argv._[0]);
 		data.flags = data.flags || 2820;
 		return Promise.resolve({
@@ -43,7 +80,7 @@ function getLogin(callback) {
 			accountName: data.username,
 			password: data.password
 		});
-	} else {                                // prompt
+	} else {		// prompt
 		return inquirer.prompt([
 			{
 				name: 'accountName',
@@ -57,18 +94,18 @@ function getLogin(callback) {
 			},
 			{
 				name: 'flags',
-				message: 'Please select which flags to enable:',
+				message: 'If "Cycling" is checked, it overrides all other options.\nPlease select which flags to enable:',
 				type: 'checkbox',
 				choices: [
-					{name: "Yellow name",
-					 value: 4,
-					 checked: true},
 					{name: "VR online indicator",
-					 value: 2048},
+					 value: 2048,
+					 checked: true},
 					{name: "Mobile online indicator",
 					 value: 512},
 					{name: "Web online indicator",
-					 value: 256}
+					 value: 256},
+					{name: "Cycling",
+					 value: -10000}
 				]
 			}
 		]).then(data => {
