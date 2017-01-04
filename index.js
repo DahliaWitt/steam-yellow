@@ -61,7 +61,7 @@ SteamUser.prototype.setPersona = function (state, name) {
 };
 client.on('loggedOn', () => {
 	client.setPersona(SteamUser.Steam.EPersonaState.Online);
-	console.log("Logged In! Press CTRL and C to stop.");
+	console.log("Logged In! Press CTRL and C to stop.\nProgram must be left Open to Have Flash");
 });
 
 /** (<Function callback>) => <Promise ({flags: <Number>, ...})> */
@@ -97,11 +97,9 @@ function getLogin(callback) {
 				message: 'If "Cycling" is checked, it overrides all other options.\nPlease select which flags to enable:',
 				type: 'checkbox',
 				choices: [
-					{name: "Yellow name",
-					 value: 4,
-					 checked: true},
 					{name: "VR online indicator",
-					 value: 2048},
+					 value: 2048,
+					 checked: true},
 					{name: "Mobile online indicator",
 					 value: 512},
 					{name: "Web online indicator",
