@@ -21,7 +21,7 @@ let flagList = [
 	512,
 	1024
 ];
-	
+
 // Overwrite the SteamUser library's persona flags to make it yellow
 SteamUser.prototype.setPersona = function (state, name) {
 	if (flags > 0) {
