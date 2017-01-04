@@ -43,20 +43,20 @@ SteamUser.prototype.setPersona = function (state, name) {
 			
 			console.log("Applying flags " + finalFlags);
 			
-            this._send(SteamUser.EMsg.ClientChangeStatus, {
-                "persona_state": state,
-                "persona_state_flags": finalFlags,
-                "player_name": name
-            });
+			this._send(SteamUser.EMsg.ClientChangeStatus, {
+				"persona_state": state,
+				"persona_state_flags": finalFlags,
+				"player_name": name
+			});
 			
 			counter++;
 			if (counter >= flagList.length * 2) {
 				counter = 0;
 				flags = 0;
 			}
-        }.bind(this);
-        
-        setInterval(update, 1000);
+		}.bind(this);
+		
+		setInterval(update, 1000);
 	}
 };
 client.on('loggedOn', () => {
@@ -66,13 +66,13 @@ client.on('loggedOn', () => {
 
 /** (<Function callback>) => <Promise ({flags: <Number>, ...})> */
 function getLogin(callback) {
-	if (argv.user && argv.pass) {           // command line
+	if (argv.user && argv.pass) {		   // command line
 		return Promise.resolve({
 			flags: argv.flags || 2820,
 			accountName: argv.user,
 			password: argv.pass
 		});
-	} else if (argv._.length) {             // JSON file
+	} else if (argv._.length) {			 // JSON file
 		let data = require(argv._[0]);
 		data.flags = data.flags || 2820;
 		return Promise.resolve({
@@ -80,7 +80,7 @@ function getLogin(callback) {
 			accountName: data.username,
 			password: data.password
 		});
-	} else {                                // prompt
+	} else {								// prompt
 		return inquirer.prompt([
 			{
 				name: 'accountName',
