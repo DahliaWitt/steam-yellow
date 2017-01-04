@@ -58,4 +58,4 @@ Flags default to everything enabled.
 
 ### Use at your own risk. I'm not responsible for anything that happens. 
 
-Disclaimer: Steam Forum Moderators are currently is aware of the glitch and have most likely have reported this to Valve (http://steamcommunity.com/discussions/forum/1/154645427520675908/). Use at your own risk. 
+Disclaimer: Steam Forum Moderators are currently aware of the glitch and have most likely have reported this to Valve (http://steamcommunity.com/discussions/forum/1/154645427520675908/). Use at your own risk. 
