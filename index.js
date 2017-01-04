@@ -15,6 +15,7 @@ console.log("Welcome to yellow-steam!");
 console.log("Join our discord and steam group!");
 console.log("WEBSITE: https://drakewitt.github.io/steam-yellow/");
 
+let flag;
 let flags;
 let flagsArr = [ 
 	1, 
@@ -34,9 +35,7 @@ let flagsArr = [
 	769,
 	260,
 	257,
-	4,
-	1
-]; // etc
+]; 
 let currentFlag = 0;
 // Overwrite the SteamUser library's persona flags to make it yellow
 SteamUser.prototype.setPersona = function (state, name) {
