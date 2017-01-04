@@ -1,7 +1,5 @@
 "use strict";
 
-// Added Loop Option
-
 /*
 * IMPORTS: Libraries that steam-yellow uses.
 */
@@ -15,41 +13,46 @@ console.log("Welcome to yellow-steam!");
 console.log("Join our discord and steam group!");
 console.log("WEBSITE: https://drakewitt.github.io/steam-yellow/");
 
-let flag;
 let flags;
-let flagsArr = [ 
-	1, 
+let counter = 0;
+let flagList = [
+	1,
 	256,
 	512,
-	1024,
-	2048,
-	1024,
-	512,
-	256,
-]; 
-let currentFlag = 0;
+	1024
+];
+
 // Overwrite the SteamUser library's persona flags to make it yellow
 SteamUser.prototype.setPersona = function (state, name) {
 	if (flags > 0) {
-        this._send(SteamUser.EMsg.ClientChangeStatus, {
-            "persona_state": state,
-            "persona_state_flags": flagsArr[currentFlag], // This makes it yellow
-            "player_name": name
-        });
-    }
-	else {
-		let update = function() { 
-			flag = flagsArr[currentFlag];
+		this._send(SteamUser.EMsg.ClientChangeStatus, {
+			"persona_state": state,
+			"persona_state_flags": flags,
+			"player_name": name
+		});
+	} else {
+		let flags = 0;
+		
+		let update = function() {
+			flags |= flagList[Math.floor(counter / 2)];
 			
-			console.log("Applying flag " + flag);
+			let finalFlags = flags;
+			if (counter % 2 == 1) {
+				finalFlags |= 4;
+			}
+			
+			console.log("Applying flags " + finalFlags);
+			
 			this._send(SteamUser.EMsg.ClientChangeStatus, {
 				"persona_state": state,
-				"persona_state_flags": flagsArr[currentFlag], // This makes it yellow
+				"persona_state_flags": finalFlags,
 				"player_name": name
 			});
 			
-			if (++currentFlag > flagsArr.length - 1) {
-				currentFlag = 0;
+			counter++;
+			if (counter >= flagList.length * 2) {
+				counter = 0;
+				flags = 0;
 			}
 		}.bind(this);
 		
@@ -63,13 +66,13 @@ client.on('loggedOn', () => {
 
 /** (<Function callback>) => <Promise ({flags: <Number>, ...})> */
 function getLogin(callback) {
-	if (argv.user && argv.pass) {           // command line
+	if (argv.user && argv.pass) {		// command line
 		return Promise.resolve({
 			flags: argv.flags || 2820,
 			accountName: argv.user,
 			password: argv.pass
 		});
-	} else if (argv._.length) {             // JSON file
+	} else if (argv._.length) {		// JSON file
 		let data = require(argv._[0]);
 		data.flags = data.flags || 2820;
 		return Promise.resolve({
@@ -77,7 +80,7 @@ function getLogin(callback) {
 			accountName: data.username,
 			password: data.password
 		});
-	} else {                                // prompt
+	} else {		// prompt
 		return inquirer.prompt([
 			{
 				name: 'accountName',
@@ -91,7 +94,7 @@ function getLogin(callback) {
 			},
 			{
 				name: 'flags',
-				message: 'If Inf Loop is checked, it will be the default option.\nPlease select which flags to enable:',
+				message: 'If "Cycling" is checked, it overrides all other options.\nPlease select which flags to enable:',
 				type: 'checkbox',
 				choices: [
 					{name: "VR online indicator",
@@ -101,7 +104,7 @@ function getLogin(callback) {
 					 value: 512},
 					{name: "Web online indicator",
 					 value: 256},
-					{name: "Inf Loop",
+					{name: "Cycling",
 					 value: -10000}
 				]
 			}
