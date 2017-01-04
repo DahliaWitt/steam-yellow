@@ -1,5 +1,7 @@
 "use strict";
 
+// Added Loop Option
+
 /*
 * IMPORTS: Libraries that steam-yellow uses.
 */
@@ -91,7 +93,7 @@ function getLogin(callback) {
 			},
 			{
 				name: 'flags',
-				message: 'Please select which flags to enable:',
+				message: 'If Inf Loop Is Checked It will Overrive any other Option.\nPlease select which flags to enable:',
 				type: 'checkbox',
 				choices: [
 					{name: "Yellow name",
