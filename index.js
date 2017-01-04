@@ -94,7 +94,7 @@ function getLogin(callback) {
 			},
 			{
 				name: 'flags',
-				message: 'Please select which flags to enable:',
+				message: 'If "Cycling" is checked, it overrides all other options.\nPlease select which flags to enable:',
 				type: 'checkbox',
 				choices: [
 					{name: "Yellow name",
