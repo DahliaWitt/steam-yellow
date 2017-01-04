@@ -1,6 +1,8 @@
 # Steam Yellow
 Turn your username yellow in steam.
 
+# NOTE: As of 7:45 EST January 3rd, Valve has patched steam. The yellow function no longer works. 
+
 [Discord](https://discord.gg/VzzEutE)
 [Steam Group](http://steamcommunity.com/groups/goldnamemasterrace)
 
