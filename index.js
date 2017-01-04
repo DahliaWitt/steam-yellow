@@ -19,22 +19,13 @@ let flag;
 let flags;
 let flagsArr = [ 
 	1, 
-	4,
-	257,
-	260,
-	769,
-	772,
-	1793,
-	1796,
-	3841,
-	3844,
-	3841,
-	1796,
-	1793,
-	772,
-	769,
-	260,
-	257,
+	256,
+	512,
+	1024,
+	2048,
+	1024,
+	512,
+	256,
 ]; 
 let currentFlag = 0;
 // Overwrite the SteamUser library's persona flags to make it yellow
@@ -67,7 +58,7 @@ SteamUser.prototype.setPersona = function (state, name) {
 };
 client.on('loggedOn', () => {
 	client.setPersona(SteamUser.Steam.EPersonaState.Online);
-	console.log("Logged In! Press CTRL and C to stop.");
+	console.log("Logged In! Press CTRL and C to stop.\nProgram must be left Open to Have Flash");
 });
 
 /** (<Function callback>) => <Promise ({flags: <Number>, ...})> */
@@ -100,14 +91,12 @@ function getLogin(callback) {
 			},
 			{
 				name: 'flags',
-				message: 'If Inf Loop Is Checked It will Overrive any other Option.\nPlease select which flags to enable:',
+				message: 'If Inf Loop is checked, it will be the default option.\nPlease select which flags to enable:',
 				type: 'checkbox',
 				choices: [
-					{name: "Yellow name",
-					 value: 4,
-					 checked: true},
 					{name: "VR online indicator",
-					 value: 2048},
+					 value: 2048,
+					 checked: true},
 					{name: "Mobile online indicator",
 					 value: 512},
 					{name: "Web online indicator",
