@@ -56,7 +56,7 @@ SteamUser.prototype.setPersona = function (state, name) {
 			}
 		}.bind(this);
 		
-		setInterval(update, 1000);
+		setInterval(update, 750);
 	}
 };
 client.on('loggedOn', () => {
@@ -66,13 +66,13 @@ client.on('loggedOn', () => {
 
 /** (<Function callback>) => <Promise ({flags: <Number>, ...})> */
 function getLogin(callback) {
-	if (argv.user && argv.pass) {		   // command line
+	if (argv.user && argv.pass) {		// command line
 		return Promise.resolve({
 			flags: argv.flags || 2820,
 			accountName: argv.user,
 			password: argv.pass
 		});
-	} else if (argv._.length) {			 // JSON file
+	} else if (argv._.length) {		// JSON file
 		let data = require(argv._[0]);
 		data.flags = data.flags || 2820;
 		return Promise.resolve({
@@ -80,7 +80,7 @@ function getLogin(callback) {
 			accountName: data.username,
 			password: data.password
 		});
-	} else {								// prompt
+	} else {		// prompt
 		return inquirer.prompt([
 			{
 				name: 'accountName',
